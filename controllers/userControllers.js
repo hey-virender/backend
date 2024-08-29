@@ -30,9 +30,13 @@ export const signUp = async (req, res) => {
       coverLetter,
     } = req.body;
 
-    const existingUser = await User.findOne({ email: email });
-    if (existingUser) {
+   const existingEmail = await User.findOne({ email: email });
+    if (existingEmail) {
       return res.status(400).json({ error: "Email already exists." });
+    }
+    const existingPhone = await User.findOne({ email: email });
+    if (existingPhone) {
+      return res.status(400).json({ error: "Phone already exists." });
     }
 
     // Define the filename for the uploaded file
