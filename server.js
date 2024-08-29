@@ -20,6 +20,7 @@ app.use("/uploads", express.static("uploads"));
 
 // Use routes
 app.use("/api", userRoutes);
+app.get("/api",(req,res)=>{res.send("API working")})
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
